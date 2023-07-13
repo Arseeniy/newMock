@@ -1,4 +1,4 @@
-package com.example.newMock.Model;
+package com.example.newmock.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ResponseDTO {
+public class RequestDTO {
     private String rqUID;
-    private String clientID;
+    private String clientId;
     private String account;
-    private String currency;
-    private String balance;
-    private String maxLimit;
+    private String openDate;
+    private String closeDate;
 }

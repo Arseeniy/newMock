@@ -1,14 +1,14 @@
-package com.example.newMock.Service;
+package com.example.newmock.service;
 
-import com.example.newMock.Controller.MainController;
-import com.example.newMock.Model.RequestDTO;
-import com.example.newMock.Model.ResponseDTO;
+import com.example.newmock.controller.MainController;
+import com.example.newmock.exception.LogException;
+import com.example.newmock.exception.ValidationException;
+import com.example.newmock.model.RequestDTO;
+import com.example.newmock.model.ResponseDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -20,14 +20,9 @@ import java.util.Random;
 public class LogicServiceImpl implements LogicService {
 
     private Logger log = LoggerFactory.getLogger(MainController.class);
-    ObjectMapper mapper = new ObjectMapper();
-    private ResponseEntity response;
+    private ObjectMapper mapper = new ObjectMapper();
 
-    public Object getResponseJson(RequestDTO requestDTO) {
-
-        if (!validateRequest(requestDTO)) {
-            return response;
-        }
+    public ResponseDTO getResponseJson(RequestDTO requestDTO) {
 
         char firstDigit = requestDTO.getClientId().charAt(0);
 
@@ -39,20 +34,17 @@ public class LogicServiceImpl implements LogicService {
             case '8':
                 maxLimit = new BigDecimal(2000.00);
                 currency = "US";
-                balance = new BigDecimal(BigInteger.valueOf(new Random().nextInt(Integer.parseInt(maxLimit.toString()))),
-                        2).toString();
+                balance = getRandomBalance(maxLimit);
                 break;
             case '9':
                 maxLimit = new BigDecimal(1000.00);
                 currency = "EU";
-                balance = new BigDecimal(BigInteger.valueOf(new Random().nextInt(Integer.parseInt(maxLimit.toString()))),
-                        2).toString();
+                balance = getRandomBalance(maxLimit);
                 break;
             default:
                 maxLimit = new BigDecimal(10000.00);
                 currency = "RUB";
-                balance = new BigDecimal(BigInteger.valueOf(new Random().nextInt(Integer.parseInt(maxLimit.toString()))),
-                        2).toString();
+                balance = getRandomBalance(maxLimit);
         }
 
         ResponseDTO responseDTO = new ResponseDTO(requestDTO.getRqUID(),
@@ -66,39 +58,43 @@ public class LogicServiceImpl implements LogicService {
             log.info("\n***** Запрос *****" + mapper.writerWithDefaultPrettyPrinter().writeValueAsString(requestDTO));
             log.info("\n***** Ответ *****" + mapper.writerWithDefaultPrettyPrinter().writeValueAsString(responseDTO));
         } catch (JsonProcessingException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            throw new LogException(e.getMessage());
         }
 
         return responseDTO;
 
     }
 
-    private Boolean validateRequest(RequestDTO requestDTO) {
+    public void validateRequest(RequestDTO requestDTO) {
 
         if (!requestDTO.getClientId().matches("\\d+")) {
-            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("clientId is not valid");
-            return false;
+            throw new ValidationException("clientId is not valid");
         }
+
         if (requestDTO.getRqUID() == null || requestDTO.getRqUID().length() == 0) {
-            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("rqUID is empty");
-            return false;
+            throw new ValidationException("rqUID is empty");
+
         }
+
         if (requestDTO.getClientId() == null || requestDTO.getClientId().length() == 0) {
-            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("clientId is empty");
-            return false;
+            throw new ValidationException("clientId is empty");
         }
+
         if (requestDTO.getAccount() == null || requestDTO.getAccount().length() == 0) {
-            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("account is empty");
-            return false;
+            throw new ValidationException("account is empty");
         }
+
         if (requestDTO.getOpenDate() == null || requestDTO.getOpenDate().length() == 0) {
-            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("openDate is empty");
-            return false;
+            throw new ValidationException("openDate is empty");
         }
+
         if (requestDTO.getCloseDate() == null || requestDTO.getCloseDate().length() == 0) {
-            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("closeDate is empty");
-            return false;
+            throw new ValidationException("closeDate is empty");
         }
-        return true;
+    }
+
+    private String getRandomBalance(BigDecimal maxLimit) {
+        return new BigDecimal(BigInteger.valueOf(new Random().nextInt(Integer.parseInt(maxLimit.toString()))),
+                2).toString();
     }
 }
