@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MainController {
     @Autowired
-    LogicService logicService;
+    private LogicService logicService;
 
     @PostMapping(value = "/info/postBalances",
             produces = MediaType.APPLICATION_JSON_VALUE,
