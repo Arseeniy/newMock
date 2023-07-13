@@ -10,9 +10,5 @@ g
 7src/main/java/com/example/newMock/Model/RequestDTO.java,7\a\7ace3a372ad71934c17bf5fe4b168a2b44d2c96b
 i
 9src/main/java/com/example/newMock/newMockApplication.java,4\6\465cab11cd65878f3ecbda9ca1a28a3cc362995a
-p
-@src/main/java/com/example/newMock/Controller/MainController.java,9\d\9d69b967eb3b28e0569d31a4a06def6fc84d32c8
 h
 8src/main/java/com/example/newMock/Model/ResponseDTO.java,e\7\e7666a4b4114649c5d313cd6b599cd76c357963c
-o
-?src/main/java/com/example/newMock/Service/LogicServiceImpl.java,0\9\09fa2d47511757404071cbe26a863f36dec96bb9

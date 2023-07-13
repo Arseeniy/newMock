@@ -74,6 +74,11 @@ public class LogicServiceImpl implements LogicService {
     }
 
     private Boolean validateRequest(RequestDTO requestDTO) {
+
+        if (!requestDTO.getClientId().matches("\\d+")) {
+            response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("clientId is not valid");
+            return false;
+        }
         if (requestDTO.getRqUID() == null || requestDTO.getRqUID().length() == 0) {
             response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("rqUID is empty");
             return false;
