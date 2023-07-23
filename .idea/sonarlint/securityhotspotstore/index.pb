@@ -12,3 +12,5 @@ i
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 k
 ;src/main/java/com/example/newMock/Service/LogicService.java,7\f\7fb233c9ec19b904832461592373eab8bdc8be90
+h
+8src/main/java/com/example/newmock/model/ResponseDTO.java,d\e\de2950a1218fdf5eb2bf999f4d31576b55542eed

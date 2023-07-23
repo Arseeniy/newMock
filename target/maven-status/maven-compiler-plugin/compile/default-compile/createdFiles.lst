@@ -1,6 +1,8 @@
-com\example\newMock\newMockApplication.class
-com\example\newMock\Service\LogicService.class
-com\example\newMock\Model\RequestDTO.class
-com\example\newMock\Model\ResponseDTO.class
-com\example\newMock\Controller\MainController.class
-com\example\newMock\Service\LogicServiceImpl.class
+com\example\newmock\model\ResponseDTO.class
+com\example\newmock\service\LogicServiceImpl.class
+com\example\newmock\exception\ValidationException.class
+com\example\newmock\model\RequestDTO.class
+com\example\newmock\newMockApplication.class
+com\example\newmock\exception\LogException.class
+com\example\newmock\service\LogicService.class
+com\example\newmock\controller\MainController.class

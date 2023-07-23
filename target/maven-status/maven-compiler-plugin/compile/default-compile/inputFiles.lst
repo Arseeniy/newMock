@@ -1,6 +1,8 @@
-C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newMock\Controller\MainController.java
-C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newMock\Model\ResponseDTO.java
-C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newMock\newMockApplication.java
-C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newMock\Service\LogicServiceImpl.java
-C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newMock\Model\RequestDTO.java
-C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newMock\Service\LogicService.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\controller\MainController.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\model\ResponseDTO.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\exception\ValidationException.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\newMockApplication.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\service\LogicServiceImpl.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\model\RequestDTO.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\service\LogicService.java
+C:\Users\Arseniy\Desktop\newMock\src\main\java\com\example\newmock\exception\LogException.java
